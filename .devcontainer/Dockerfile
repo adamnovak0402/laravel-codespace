@@ -11,11 +11,18 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     libpq-dev \
+    libicu-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libwebp-dev \
     default-mysql-client \
     && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y nodejs \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# GD vyžaduje configure před instalací (PHP 8.x)
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp
 
 # PHP extensions
 RUN docker-php-ext-install \
