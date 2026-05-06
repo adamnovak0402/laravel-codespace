@@ -38,5 +38,5 @@
 
   "postCreateCommand": "bash .devcontainer/setup.sh",
 
-  "remoteUser": "www-data"
+  "remoteUser": "root"
 }
