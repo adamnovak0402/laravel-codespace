@@ -6,7 +6,9 @@ echo "==> Nastavuji prostředí..."
 # Pokud ještě neexistuje composer.json (nový fork bez Laravelu), nainstaluj Laravel
 if [ ! -f "composer.json" ]; then
     echo "==> Instaluji nový Laravel projekt..."
-    composer create-project laravel/laravel . --prefer-dist
+    composer create-project laravel/laravel /tmp/laravel_install --prefer-dist --no-interaction
+    cp -r /tmp/laravel_install/. .
+    rm -rf /tmp/laravel_install
 fi
 
 # Nainstaluj PHP závislosti
